@@ -25,5 +25,4 @@ Contributors
 
 Odoo Apps Store: https://apps.odoo.com/apps/modules/13.0/pos_mobile_restaurant/
 
-
-Tested on `Odoo 11.0 <https://github.com/odoo/odoo/commit/ee2b9fae3519c2494f34dacf15d0a3b5bd8fbd06>`_
+_
