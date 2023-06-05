@@ -7,21 +7,18 @@
 # Copyright 2017 Lilia Salihova
 # Copyright 2017-2018 Gabbasov Dinar <https://it-projects.info/team/GabbasovDinar>
 # Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
+# Copyright 2021 Denis Mudarisov <https://github.com/trojikman>
 # License MIT (https://opensource.org/licenses/MIT).
-
 {
     "name": "POS: Prepaid credits",
     "summary": "Comfortable sales for your regular customers. Debt payment method for POS",
     "category": "Point Of Sale",
-    "live_test_url": "http://apps.it-projects.info/shop/product/pos-debt-notebook?version=13.0",
     "images": ["images/debt_notebook.png"],
-    "version": "13.0.5.3.2",
+    "version": "13.0.5.3.4",
     "author": "IT-Projects LLC, Ivan Yelizariev",
-    "support": "pos@it-projects.info",
-    "website": "https://apps.odoo.com/apps/modules/13.0/pos_debt_notebook/",
+    "support": "apps@itpp.dev",
+    "website": "https://github.com/itpp-labs/pos-addons",
     "license": "Other OSI approved licence",  # MIT
-    "price": 280.00,
-    "currency": "EUR",
     "external_dependencies": {"python": [], "bin": []},
     "depends": ["point_of_sale"],
     "data": [
@@ -37,7 +34,7 @@
     ],
     "qweb": ["static/src/xml/pos.xml"],
     "demo": ["data/demo.xml"],
-    "installable": False,
+    "installable": True,
     "uninstall_hook": "pre_uninstall",
     "demo_title": "POS Debt/Credit Notebook",
     "demo_addons": [],

@@ -1,6 +1,7 @@
 # Copyright 2017-2018 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
 # Copyright 2017 gnidorah <https://github.com/gnidorah>
 # Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
+# Copyright 2021 Denis Mudarisov <https://github.com/trojikman>
 # License MIT (https://opensource.org/licenses/MIT).
 
 from odoo.tests.common import TransactionCase
@@ -22,26 +23,30 @@ class TestPosCreditUpdate(TransactionCase):
                 "note": 'code "TST" is used for tests',
             }
         )
-        self.journal = self.env["pos.config"].create_journal(
-            {
-                "sequence_name": "Test Credit Journal",
-                "prefix": "TST ",
-                "user": self.user,
-                "noupdate": True,
-                "journal_name": "Test Credit Journal",
-                "code": "TSTJ",
-                "type": "cash",
-                "debt": True,
-                "journal_user": True,
-                "debt_account": self.debt_account,
-                "credits_via_discount": False,
-                "category_ids": False,
-                "write_statement": True,
-                "debt_dummy_product_id": False,
-                "debt_limit": 0,
-                "pos_cash_out": True,
-                "credits_autopay": False,
-            }
+        self.journal = (
+            self.env["pos.config"]
+            .create_pos_payment_method(
+                {
+                    "sequence_name": "Test Credit Journal",
+                    "prefix": "TST ",
+                    "user": self.user,
+                    "noupdate": True,
+                    "journal_name": "Test Credit Journal",
+                    "code": "TSTJ",
+                    "type": "cash",
+                    "debt": True,
+                    "journal_user": True,
+                    "debt_account": self.debt_account,
+                    "credits_via_discount": False,
+                    "category_ids": False,
+                    "write_statement": True,
+                    "debt_dummy_product_id": False,
+                    "debt_limit": 0,
+                    "pos_cash_out": True,
+                    "credits_autopay": False,
+                }
+            )
+            .cash_journal_id
         )
 
     def get_credit_balance(self, balance, new_balance):

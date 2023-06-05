@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!--Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
     License MIT (https://opensource.org/licenses/MIT). -->
-<openerp>
+<odoo>
     <data>
         <!--Set field debt to 'credit' in model pos.config.settings via get_default_debt_type-->
         <function
@@ -17,9 +17,9 @@
             <field name="list_price">1</field>
             <field name="type">service</field>
             <field name="uom_id" ref="uom.product_uom_unit" />
-            <field
-                name="description"
-            >This is a product for purchasing "Credits".</field>
+            <field name="description">
+                This is a product for purchasing "Credits".
+            </field>
         </record>
     </data>
-</openerp>
+</odoo>

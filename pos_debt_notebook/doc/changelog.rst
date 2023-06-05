@@ -1,3 +1,13 @@
+`5.3.4`
+-------
+
+- **Fix:** pos session didn't close after using Credits
+
+`5.3.3`
+-------
+
+- **Fix:** credit balance was not changed after payment of the invoice
+
 `5.3.2`
 -------
 - **Fix:** Double move lines for POS orders

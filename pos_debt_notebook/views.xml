@@ -2,8 +2,9 @@
 <!--Copyright 2014-2016 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
     Copyright 2015 Alexis de Lattre <https://github.com/alexis-via>
     Copyright 2016-2017 Stanislav Krotov <https://it-projects.info/team/ufaks>
-    Copyright 2018-2019 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
-    License MIT (https://opensource.org/licenses/MIT). -->
+    Copyright 2018-2020 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
+    License MIT (https://opensource.org/licenses/MIT).
+ -->
 <odoo>
     <!-- RES PARTNER -->
     <record id="view_partner_form_debt" model="ir.ui.view">
@@ -48,19 +49,27 @@
                         <span
                             attrs="{'invisible': ['|', ('debt', '&lt;', 0),('debt_type', '!=', 'debt')]}"
                             class="o_stat_text text-danger"
-                        >Debts </span>
+                        >
+                            Debts
+                        </span>
                         <span
                             attrs="{'invisible': ['|', ('debt', '&gt;=', 0),('debt_type', '!=', 'debt')]}"
                             class="o_stat_text text-success"
-                        >Debts </span>
+                        >
+                            Debts
+                        </span>
                         <span
                             attrs="{'invisible': ['|', ('credit_balance', '&lt;', 0),('debt_type', '!=', 'credit')]}"
                             class="o_stat_text text-success"
-                        >Credits </span>
+                        >
+                            Credits
+                        </span>
                         <span
                             attrs="{'invisible': ['|', ('credit_balance', '&gt;=', 0),('debt_type', '!=', 'credit')]}"
                             class="o_stat_text text-danger"
-                        >Credits </span>
+                        >
+                            Credits
+                        </span>
                     </div>
                 </button>
             </xpath>
@@ -103,10 +112,16 @@
             <xpath expr="//div[hasclass('oe_kanban_details')]/ul" position="inside">
                 <li
                     t-if="record.debt_type.raw_value == 'debt' and record.debt.raw_value"
-                >Debt: <field name="debt" /></li>
+                >
+                    Debt:
+                    <field name="debt" />
+                </li>
                 <li
                     t-if="record.debt_type.raw_value == 'credit' and record.credit_balance.raw_value"
-                >Credit: <field name="credit_balance" /></li>
+                >
+                    Credit:
+                    <field name="credit_balance" />
+                </li>
             </xpath>
         </field>
     </record>
@@ -119,12 +134,15 @@
             ref="point_of_sale.view_account_journal_pos_user_form"
         />
         <field name="arch" type="xml">
-            <xpath expr="//notebook[last()]/page[last()]" position="inside">
+            <xpath expr="//page[@name='point_of_sale']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath
+                expr="//notebook[last()]/page[@name='point_of_sale']"
+                position="inside"
+            >
                 <group string="Credits">
-                    <field
-                        name="debt"
-                        attrs="{'invisible': [('journal_user', '=', False)]}"
-                    />
+                    <field name="debt" />
                     <field
                         name="pos_cash_out"
                         attrs="{'invisible': ['|',('debt', '!=', True),('credits_via_discount', '=', True)]}"
@@ -156,7 +174,7 @@
         <field name="model">pos.config</field>
         <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='payment_methods']" position="after">
+            <xpath expr="//div[@id='payment_methods_new']" position="after">
                 <div class="col-xs-12 col-md-6 o_setting_box">
                     <div class="o_setting_right_pane">
                         <label for="debt_dummy_product_id" />
@@ -231,11 +249,8 @@
         <field name="model">pos.session</field>
         <field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//field[@name='statement_ids']/tree/field[@name='total_entry_encoding']"
-                position="after"
-            >
-                <field name="pos_credit_update_balance" />
+            <xpath expr="//notebook" position="after">
+                <!-- <field name="pos_credit_update_balance"/> -->
             </xpath>
         </field>
     </record>

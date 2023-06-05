@@ -1,4 +1,6 @@
-odoo.define("pos_debt_notebook.tour", function(require) {
+/* Copyright 2021 Denis Mudarisov <https://github.com/trojikman>
+   License MIT (https://opensource.org/licenses/MIT). */
+odoo.define("pos_debt_notebook.tour", function (require) {
     "use strict";
 
     var tour = require("web_tour.tour");
@@ -112,7 +114,6 @@ odoo.define("pos_debt_notebook.tour", function(require) {
                 content: "Validate payment",
             },
             {
-                extra_trigger: ".pos-sale-ticket",
                 trigger: '.button.next.highlight:contains("Next Order")',
                 content: "Check proceeded validation",
             },
@@ -122,7 +123,7 @@ odoo.define("pos_debt_notebook.tour", function(require) {
 
     var steps = [];
     steps = steps.concat(open_pos_neworder());
-    steps = steps.concat(add_product_to_order("Miscellaneous"));
+    steps = steps.concat(add_product_to_order("Office Chair"));
     steps = steps.concat(set_customer("Joel Willis"));
     steps = steps.concat(debt_method_paying("Credits"));
 

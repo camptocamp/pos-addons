@@ -32,6 +32,8 @@ Installation \ Deinstallation
 Roadmap
 =======
 
+* TODO. Field ``journal_id`` in ``pos.credit.update`` model should be replaced with ``pos_payment_method_id = fields.Many2on('pos.payment.method')``
+
 * TODO. New option for **Zero transactions** feature: allow to create extra order line with negative amount instead of applying discounts. 
 
   * It creates extra record in accounting system (pos.order.line). It can be used as a backup for *Manual Updates*
@@ -66,4 +68,4 @@ Further information
 Odoo Apps Store: https://apps.odoo.com/apps/modules/13.0/pos_debt_notebook/
 
 
-Tested on `Odoo 12.0 <https://github.com/odoo/odoo/commit/b05e34a0d9b13a1c6971b99ed3e5fa20199f3545>`_
+Tested on `Odoo 13.0 <https://github.com/odoo/odoo/commit/db2e6bc600364c00e8a1d528d4b17ae052ecd41e>`_
